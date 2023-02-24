@@ -3,7 +3,7 @@
   /* justify-content: center; */
   align-items: center;
   background-color: #333;
-  height: 175px;
+  height: 20vh;
 }
 
 .image-container {
@@ -14,14 +14,6 @@
 .image-container img {
   max-width: 150px;
   height: 150px;
-}
-
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 50%;
-  /* margin-right: 25%; */
 }
 
 .header-button {
@@ -49,14 +41,11 @@
 .friends{
   width: 25%;
   background-color: #3c3c3c;;
-  height: 800px;
-}
-
-.bigscreen{
-  flex: 1;
-  width: 75%;
-  background-color: #424242;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .logincontainerall{
@@ -151,7 +140,7 @@ h3:hover {
   background-color: #3c3c3c;;
   display: flex;
   align-items: center;
-  height: 815px;
+  height: 80vh;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -173,6 +162,7 @@ h3:hover {
   text-align: center;
   display: flex;
   flex-direction: column;
+  height: 80vh;
 }
 
 .friend{
@@ -187,7 +177,6 @@ h3:hover {
 }
 
 .friendbox{
-  float:left;
   justify-content: space-between;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
@@ -218,21 +207,353 @@ h3:hover {
   background-color: #333;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  color: white;
-  font-size: 16px;
   width: 100%;
   text-align: center;
   height: 25%;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
 }
 
 .upper75{
   height: 75%;
-  margin-left: 20%;
-  margin-right: 20%;
-  justify-content: space-around;
   flex-direction: column;
   align-items: center;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.friendprofiles{
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  background-color: #3c3c3c;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow: auto;
+  
+}
+
+.friendprofiles:hover{
+  background-color: #4d4d4d;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+.bigscreen{
+  width: 75%;
+  background-color: #424242;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 80vh;
+}
+
+.listoffriends{
+  width: 25%;
+  outline: 2px solid white;
+  height: 100%;
+  overflow: auto;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+.entirecalendar{
+  width: 50%;
+  padding: 10px;
+}
+
+.evenfriendlist{
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  background-color: #3c3c3c;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.evenfriendlist:hover{
+  background-color: #ff74a4;
+  cursor: pointer;
+}
+
+.evenfriendlistselected{
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  background-color: #ff0058;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.eventcontainer{
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.planeventbutton{
+  background-color: #da0c54;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: white;
+  float:left;
+  justify-content: space-between;
+  width: 15%;
+}
+
+.planeventbutton:hover{
+  background-color: #ff74a4;
+}
+
+.listofeventinfo{
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  width: 75%;
+  background-color: #3c3c3c;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.entirepersonalcalendar{
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Calendar */
+
+.react-calendar {
+  width: 50%;
+  max-width: 100%;
+  background: #3c3c3c;
+  border: 2px solid #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+  height:100%;
+  color: #da0c54;
+}
+
+.react-calendar--doubleView {
+  width: 700px;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+}
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  
+}
+
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  height: 44px;
+  margin-bottom: 1em;
+  color: white
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  color: white
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: #ff74a4;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #ff74a4;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75em;
+  color: white
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #ff74a4;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575;
+  
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+  color: white;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  text-align: center;
+  line-height: 16px;
+  
+}
+
+.react-calendar__tile:disabled {
+  background-color: #ff74a4;
+  color: #da0c54
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #ff74a4;
+  color: white;
+}
+
+.react-calendar__tile--now {
+  background: #ff74a4;
+  color: white;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ff74a4;
+}
+
+.react-calendar__tile--hasActive {
+  background: #ff74a4;
+  color: white;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #ff74a4;
+}
+
+.react-calendar__tile--active {
+  background: #da0c54;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #da0c54;
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #ff74a4;
+}
+
+.myClassName{
+  background: #ff74a4;
+  color: white;
 }

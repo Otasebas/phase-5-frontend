@@ -8,6 +8,7 @@ import ProfileBar from './components/Friends/ProfileBar';
 import AddFriend from './components/Friends/AddFriend';
 import Pending from './components/Friends/Pending';
 import Requests from './components/Friends/Requests';
+import PersonalDates from './components/Calendar/PersonalDates';
 import { useEffect, useState } from 'react';
 import {
   createBrowserRouter,
@@ -60,10 +61,11 @@ function App() {
         </div>
     },
     {
-      path: "/profile",
+      path: "/personalcalander",
       element:
         <div>
-
+          <Header user={user} setUser={setUser}/>
+          <PersonalDates />
         </div>
     },
     {

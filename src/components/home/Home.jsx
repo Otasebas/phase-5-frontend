@@ -1,5 +1,6 @@
 import FriendBar from "./FriendBar"
 import { useNavigate } from "react-router-dom"
+import HomeCalendar from "./HomeCalendar"
 
 function Home({user}){
     
@@ -15,9 +16,11 @@ function Home({user}){
     
     return(
         <div className="sidebarcontainer">
-            <FriendBar />
             {user ? (
-                <div className="bigscreen"> Logged in </div>
+                <>
+                    <FriendBar />
+                    <HomeCalendar />
+                </>
             ):(
                 <div className="bigscreen">
                     <h1> Log In Or Sign Up Now To Plan An Event!</h1>

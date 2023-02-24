@@ -23,17 +23,21 @@ function FriendBar(){
 
     return(
         <div className="friends">
-            {/* <div className="upper75">
+            <div className="upper75">
                 {friends.map(friend =>{
                     return(
-                        <EachFriend friend={friend}/>
+                        <EachFriend key={friend.id} friend={friend}/>
                     )
                 })}
             </div>
-            <div className="profileBottom">
-                <h3>username: {user.username}</h3>
-                <h1>{user.nickname}</h1>
-            </div> */}
+                {user ?(
+                    <div className="profileBottom">
+                    <h3>username: {user.username}</h3>
+                    <h1>{user.nickname}</h1>
+                </div>
+                ):(
+                    null
+                )}
         </div>
     )
 }
@@ -42,6 +46,6 @@ export default FriendBar
 
 function EachFriend({friend}){
     return(
-        <div className="friend">{friend.username}</div>
+        <div className="friendprofiles">{friend.username}</div>
     )
 }
