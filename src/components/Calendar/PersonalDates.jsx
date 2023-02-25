@@ -1,12 +1,12 @@
 import FriendBar from "../home/FriendBar"
 import PersonalCalander from './PersonalCalendar.jsx';
 
-function PersonalDates(){
+function PersonalDates({user}){
 
     return(
         <div className="sidebarcontainer">
             <FriendBar />
-            <PersonalCalander />
+            <PersonalCalander user={user}/>
         </div>
     )
 }

@@ -78,7 +78,7 @@ function HomeCalendar(){
                 </div>
             </div>
             <div className="listofeventinfo"> Event Info:
-                <div>{value.toString()}</div>
+                <div>{format(value, "EEE-MMMM-io-yyyy")}</div>
                 <div> Guests: 
                     {guests.map(guest=>{
                         return(
