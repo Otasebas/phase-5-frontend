@@ -4,11 +4,12 @@ import Home from './components/home/Home';
 import Login from './components/Login/Login';
 import Signup from './components/Login/SignUp';
 import FriendsPage from './components/Friends/FriendsPage';
-import ProfileBar from './components/Friends/ProfileBar';
+import ProfileBar from './components/ProfileBar';
 import AddFriend from './components/Friends/AddFriend';
 import Pending from './components/Friends/Pending';
 import Requests from './components/Friends/Requests';
 import PersonalDates from './components/Calendar/PersonalDates';
+import GroupsPage from './components/Groups/GroupsPage';
 import { useEffect, useState } from 'react';
 import {
   createBrowserRouter,
@@ -65,7 +66,7 @@ function App() {
       element:
         <div>
           <Header user={user} setUser={setUser}/>
-          <PersonalDates />
+          <PersonalDates user={user} />
         </div>
     },
     {
@@ -110,6 +111,14 @@ function App() {
             <ProfileBar />
             <Requests />
           </div>
+        </div>
+    },
+    {
+      path: "/groups",
+      element:
+        <div>
+        <Header user={user} setUser={setUser}/>
+            <GroupsPage />
         </div>
     }
   ]);
