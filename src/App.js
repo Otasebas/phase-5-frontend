@@ -9,7 +9,10 @@ import AddFriend from './components/Friends/AddFriend';
 import Pending from './components/Friends/Pending';
 import Requests from './components/Friends/Requests';
 import PersonalDates from './components/Calendar/PersonalDates';
+import GroupsBar from './components/Groups/GroupsBar';
 import GroupsPage from './components/Groups/GroupsPage';
+import GroupInfo from './components/Groups/GroupInfo';
+import GroupInvites from './components/Groups/GroupInvites';
 import { useEffect, useState } from 'react';
 import {
   createBrowserRouter,
@@ -35,7 +38,11 @@ function App() {
   const router = createBrowserRouter([
     {
       path:"/*",
-      element: <h1>404 not found</h1>
+      element: 
+        <div>
+          <Header user={user} setUser={setUser}/>
+          <h1>404 not found</h1>
+        </div>
     },
     {
       path: "/",
@@ -117,8 +124,42 @@ function App() {
       path: "/groups",
       element:
         <div>
-        <Header user={user} setUser={setUser}/>
-            <GroupsPage />
+          <Header user={user} setUser={setUser}/>
+          <div className="sidebarcontainer">
+            <GroupsBar />
+            <GroupsPage user={user}/>
+          </div>
+        </div>
+    },
+    {
+      path: "/group/:id",
+      element:
+        <div>
+          <Header user={user} setUser={setUser}/>
+          <div className="sidebarcontainer">
+            <GroupsBar />
+            <GroupInfo user={user}/>
+          </div>
+        </div>
+    },
+    {
+      path: "/invites",
+      element:
+        <div>
+          <Header user={user} setUser={setUser}/>
+          <div className="sidebarcontainer">
+            <GroupsBar />
+            <GroupInvites />
+          </div>
+        </div>
+    },
+    {
+      path: "/events",
+      element:
+        <div>
+          <Header user={user} setUser={setUser}/>
+          <div className="sidebarcontainer">
+          </div>
         </div>
     }
   ]);

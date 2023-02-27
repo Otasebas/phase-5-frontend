@@ -86,7 +86,7 @@ function Signup({setUser}){
                 <label className="loginLabel">
                         Confirm Password:
                     <br />
-                            <input className="loginInput" type="tel" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                            <input className="loginInput" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                     </label>
                 <br />
                 
