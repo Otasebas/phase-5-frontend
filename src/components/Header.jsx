@@ -24,6 +24,10 @@ function Header({user, setUser}){
         navigate("/groups")
     }
 
+    function handleEvents(){
+        navigate("/events")
+    }
+
     function handleDelete(e){
         e.preventDefault()
         if(window.confirm("Are you sure you want to remove friend?")){
@@ -46,7 +50,7 @@ function Header({user, setUser}){
                     <div className="button-container">
                         <button onClick={handleCalendar} className="header-button">Calander</button>
                         <button onClick={handleGroups} className="header-button">Groups</button>
-                        <button className="header-button">Events</button>
+                        <button onClick={handleEvents} className="header-button">Events</button>
                         <button onClick={handleFriends} className="header-button">Friends</button>
                         <button onClick={handleDelete} className="header-button"> Log Out </button>
                     </div>
