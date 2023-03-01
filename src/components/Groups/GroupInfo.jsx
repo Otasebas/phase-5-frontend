@@ -43,7 +43,7 @@ function GroupInfo({user}){
                             ))
                         }
                     </div>
-                    <GroupCalendar />
+                    <GroupCalendar/>
                 </div>
                 <div className="groupinfo50darker">
                     <div className="friendbox_button"> Invite Friends! </div>
@@ -66,7 +66,7 @@ function GroupInfo({user}){
                                 ))
                             }
                         </div>
-                        <GroupCalendar />
+                        <GroupCalendar/>
                     </div>
                 </div>
             )}

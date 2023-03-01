@@ -22,7 +22,7 @@ function Home({user}){
                     <HomeCalendar />
                 </>
             ):(
-                <div className="bigscreen">
+                <div className="login">
                     <h1> Log In Or Sign Up Now To Plan An Event!</h1>
                     <button onClick={handleLogIn} className="header-button"> Log in </button>
                     <h3 onClick={handleSignUp}> Sign up </h3>

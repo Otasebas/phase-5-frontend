@@ -55,7 +55,7 @@ function UserEvents(){
             </div>
                 {invitedEvents.map(event =>{
                     return(
-                        <div className="friend">
+                        <div onClick={()=>handleEvent(event.id)} className="friend">
                             <h1 className="friendbox" >{event.name_of_event}</h1>
                         </div>
                     )

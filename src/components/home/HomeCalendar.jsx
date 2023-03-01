@@ -55,7 +55,7 @@ function HomeCalendar(){
         .then(req =>{
             if(req.ok){
                 req.json().then(res =>{
-                    navigate(`/planning/${res.id}`)
+                    navigate(`/saved/${res.id}`)
                 })
             }
             else{

@@ -88,34 +88,66 @@ function FinalPlanning(){
     }
 
     function sendInvite(){
-        fetch(`/sendinvite/${id}`,{
+        fetch(`/saveevent/${id}`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "available": available
+                "name_of_event": nameOfEvent,
+                "start_time": timeStart,
+                "end_time": timeEnd,
+                "description": description,
+                "date": value
             })
         })
-        .then(req => {
-            if(req.ok){
-                req.json().then((session) => {
-                    navigate(`/event/${session.id}`)
-                    // console.log(session)
+        .then(()=>{
+            fetch(`/sendinvite/${id}`,{
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "available": available
                 })
-            }
-            else{
-                req.json().then(session => {
-                    console.log(session.error)
-                })
-            }
+            })
+            .then(req => {
+                if(req.ok){
+                    req.json().then((session) => {
+                        navigate(`/editevent/${session.id}`)
+                        // console.log(session)
+                    })
+                }
+                else{
+                    req.json().then(session => {
+                        console.log(session.error)
+                    })
+                }
+            })
         })
+        // .then(req => {
+        //     if(req.ok){
+        //         req.json().then((session) => {
+        //             // setEvent(session)
+        //             // navigate(`/event/${session.id}`)
+        //         })
+        //     }
+        // })
+
+        
+    }
+
+    function handleRemove(){
+        fetch(`/personaldates/${id}`,{ method: 'DELETE' })
+            .then(()=>{
+                navigate("/")
+            })
     }
 
     return(
         <div className="sidebarcontainer">
             <div className="halfpage">
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className="loginLabel"> Name of Event </div>
                     <input className="loginInput" onChange={(e)=>setNameOfEvent(e.target.value)} value={nameOfEvent} type="text"/>
                         
@@ -140,13 +172,13 @@ function FinalPlanning(){
 
                     <input className="loginInput" type="time" value={timeEnd} onChange={(e)=>{setTimeEnd(e.target.value)}}/>
                     
-                    <div className="loginLabel"> Location </div>
-                    <input className="loginInput" type="text"/>
+                    {/* <div className="loginLabel"> Location </div>
+                    <input className="loginInput" type="text"/> */}
                         
                     <div className="loginLabel"> Decription </div>
                     <input className="loginInput" type="text" value={description} onChange={(e)=>{setDescription(e.target.value)}}/>
 
-                    <button className="loginButton" type="submit"> Edit </button>
+                    {/* <button className="loginButton" type="submit"> Edit </button> */}
                 </form>
             </div>
             <div className="otherpage">
@@ -167,6 +199,7 @@ function FinalPlanning(){
                 </div>
                 <div className="bottomofotherpage">
                     <button onClick={sendInvite} className="friendbox_button"> Send Invites! </button>
+                    <button onClick={handleRemove} className="friendbox_button"> Back </button>
                 </div>
             </div>
         </div>

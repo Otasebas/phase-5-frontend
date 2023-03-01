@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import Calendar from "react-calendar"
 import { format } from 'date-fns'
 import differenceInCalendarDays from "date-fns/differenceInCalendarDays"
+import { useNavigate } from "react-router-dom"
 
 function EventInfo(){
     return(
@@ -20,11 +21,14 @@ function SpecificEvent(){
 
     const {id} = useParams()
 
+    const naviagte = useNavigate()
+
     const [event, setEvent] = useState({})
     const [invitee, setInvitee] = useState([])
     const [calendarDropDown, setCalendarDropDown] = useState(false)
     const [value, setValue] = useState(new Date())
     const [eventDate, setEventDate] = useState(new Date())
+    const [going, setGoing] = useState([])
 
     useEffect(()=>{
         fetch(`/anyevent/${id}`)
@@ -32,7 +36,8 @@ function SpecificEvent(){
         .then(res => {
             setEvent(res)
             setInvitee(res.invitee_status)
-            setEventDate(new Date(res.date))
+            setEventDate(new Date(res.calendar_date.date))
+            setGoing(res.invitee_status)
         })
     },[id])
 
@@ -57,6 +62,24 @@ function SpecificEvent(){
             return 'myClassName';
           }
         }
+    }
+
+    function leave(){
+        fetch(`/declineeventinvite/${event.id}`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+            })
+        })
+        .then(req => {
+            if(req.ok){
+                req.json().then((session) => {
+                    naviagte("/invitedevent")
+                })
+            }
+        })
     }
 
     return(
@@ -87,8 +110,8 @@ function SpecificEvent(){
 
                     <input className="loginInput" type="time" value={event.end_time} />
                     
-                    <div className="loginLabel"> Location </div>
-                    <input className="loginInput" type="text"/>
+                    {/* <div className="loginLabel"> Location </div>
+                    <input className="loginInput" type="text"/> */}
                         
                     <div className="loginLabel"> Decription </div>
                     <input className="loginInput" type="text" value={event.description}/>
@@ -101,11 +124,18 @@ function SpecificEvent(){
                     return(
                         <div className="friend">
                             <h1 className="friendbox" >{invite.username}</h1>
-                            <button className="friendbox_button" >
-                                {invite.attendance === "pending" ? "pending..." : null}
-                                {invite.attendance === "accepted" ? "accepted" : null}
-                                {invite.attendance === "declined" ? "declined" : null}
-                            </button>
+                            {invite.attendance === "pending" && (
+                                <button className="friendbox_button">Pending...</button>
+                            )}
+                            {invite.attendance === "accepted" && (
+                                <button className="friendbox_button">Accepted</button>
+                            )}
+                            {invite.attendance === "declined" && (
+                                <button className="friendbox_button">Declined</button>
+                            )}
+                            {invite.attendance === null && (
+                                <button onClick={leave} className="friendbox_button">Leave</button>
+                            )}
                         </div>
                     )
                 })}

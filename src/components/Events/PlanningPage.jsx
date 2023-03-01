@@ -57,33 +57,31 @@ function PlanningPage(){
     return(
         <div className="sidebarcontainer">
           <div className="third">
-            <label/>
-                    Time Start 
+            <div className="loginLabel">Time Start </div>
+                    <br />
+                <input className="loginInput" type="time" value={timeStart} onChange={(e)=>{setTimeStart(e.target.value)}}/>
+                    <br />
+                <div className="loginLabel">
+                    Time End
+                </div>  
+                    <br />
+                <input className="loginInput" type="time" value={timeEnd} onChange={(e)=>{setTimeEnd(e.target.value)}}/>
                 <br />
-                <input type="time" value={timeStart} onChange={(e)=>{setTimeStart(e.target.value)}}/>
-                <br />
-                <label/>
-                    Time End  
-                <br />
-                <input type="time" value={timeEnd} onChange={(e)=>{setTimeEnd(e.target.value)}}/>
-                <br />
-                <button onClick={handleRemove} > Back </button>
+                <button className="loginButton" onClick={handleRemove} > Back </button>
           </div>
           <div className="middlethird">
           </div>
           <div className="third">
-            <label />
-                Event Name:
+            <div className="loginLabel" >Event Name:</div>
                 <br />
-                <input type="text" value={nameOfEvent} onChange={(e)=>{setNameOfEvent(e.target.value)}}/>
+                <input className="loginInput" type="text" value={nameOfEvent} onChange={(e)=>{setNameOfEvent(e.target.value)}}/>
                 <br />
-            <label />
-                Description of Event:
+            <div className="loginLabel">Description of Event:</div>
             <br />
-            <input type="text" value={description} onChange={(e)=>{setDescription(e.target.value)}}/>
+            <input className="loginInput" type="text" value={description} onChange={(e)=>{setDescription(e.target.value)}}/>
             <div>{description.length}/ 150</div>
             <br />
-            <button onClick={handleSave} > Save </button>
+            <button  className="loginButton" onClick={handleSave} > Save </button>
           </div>
         </div>
     )
