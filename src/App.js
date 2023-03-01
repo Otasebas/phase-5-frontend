@@ -13,6 +13,11 @@ import GroupsBar from './components/Groups/GroupsBar';
 import GroupsPage from './components/Groups/GroupsPage';
 import GroupInfo from './components/Groups/GroupInfo';
 import GroupInvites from './components/Groups/GroupInvites';
+import PlanningPage from './components/Events/PlanningPage';
+import FinalPlanning from './components/Events/FinalPlanning';
+import AllEvents from './components/Events/AllEvents';
+import EventInfo from './components/Events/EventInfo';
+import EventInvite from './components/Events/EventInvite';
 import { useEffect, useState } from 'react';
 import {
   createBrowserRouter,
@@ -121,6 +126,16 @@ function App() {
         </div>
     },
     {
+      path: "/createfriend",
+      element:
+        <div>
+        <Header user={user} setUser={setUser}/>
+          <div className="sidebarcontainer">
+            <ProfileBar />
+          </div>
+        </div>
+    },
+    {
       path: "/groups",
       element:
         <div>
@@ -158,9 +173,48 @@ function App() {
       element:
         <div>
           <Header user={user} setUser={setUser}/>
-          <div className="sidebarcontainer">
-          </div>
+          <AllEvents />
         </div>
+    },
+    {
+      path: "/planning/:id",
+      element: 
+      <div>
+        <Header user={user} setUser={setUser}/>
+        <PlanningPage />
+      </div>
+    },
+    {
+      path: "/saved/:id",
+      element: 
+      <div>
+        <Header user={user} setUser={setUser}/>
+          <FinalPlanning />
+      </div>
+    },
+    {
+      path: "/event/:id",
+      element: 
+      <div>
+        <Header user={user} setUser={setUser}/>
+        <EventInfo />
+      </div>
+    },
+    {
+      path: "/editevent/:id",
+      element: 
+      <div>
+        <Header user={user} setUser={setUser}/>
+        <EventInfo />
+      </div>
+    },
+    {
+      path: "/invitedevent",
+      element: 
+      <div>
+        <Header user={user} setUser={setUser}/>
+        <EventInvite />
+      </div>
     }
   ]);
   

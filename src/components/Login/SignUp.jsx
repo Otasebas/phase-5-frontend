@@ -32,13 +32,13 @@ function Signup({setUser}){
             })
             .then(req => {
                 if(req.ok){
-                    req.json().then((session) => {
+                    req.json().then(session => {
                          setUser(session)
                         navigate("/")
                     })
                 }
                 else{
-                    req.json().then((session) => {
+                    req.json().then(session => {
                         setErrors(session.error)
                     })
                 }

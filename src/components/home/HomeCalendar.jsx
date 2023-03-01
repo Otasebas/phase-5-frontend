@@ -18,6 +18,8 @@ function HomeCalendar(){
     const [groups, setGroups] = useState([])
     const [choosenGroups, setChosenGuests] = useState({})
 
+    const [errors, setErrors] = useState([])
+
     useEffect(() => {
         fetch('/profile')
             .then((res) => {
@@ -39,7 +41,29 @@ function HomeCalendar(){
     },[])
 
     function handleClick(){
-        navigate("/")
+        fetch("/createevent",{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "date": value,
+                "invites_friends": guests,
+                "invites_groups": choosenGroups.members
+            })
+        })
+        .then(req =>{
+            if(req.ok){
+                req.json().then(res =>{
+                    navigate(`/planning/${res.id}`)
+                })
+            }
+            else{
+                req.json().then(res => {
+                    setErrors(res.error)
+                })
+            }
+        })
     }
 
 
@@ -106,6 +130,7 @@ function HomeCalendar(){
                     <span> {choosenGroups.group_name}</span>
                 </div>
             </div>
+            {errors}
             <button onClick={handleClick} className='planeventbutton'> Plan Event! </button>
         </div>
     )

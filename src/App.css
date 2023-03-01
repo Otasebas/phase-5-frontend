@@ -382,7 +382,7 @@ h3:hover {
   color: white;
   font-size: 16px;
   width: 100%;
-  background-color: #11fd8b;
+  background-color: #da0c54;
   padding: 10px;
   display: flex;
   justify-content: space-around;
@@ -393,7 +393,7 @@ h3:hover {
   color: white;
   font-size: 16px;
   width: 100%;
-  background-color: #da0c54;
+  background-color: #3c3c3c;
   padding: 10px;
   display: flex;
   justify-content: space-around;
@@ -567,6 +567,65 @@ h3:hover {
   overflow: scroll;
 }
 
+.third{
+  width: 35%;
+  background-color: #3c3c3c;
+}
+
+.middlethird{
+  width: 40%;
+  height: 80vh;
+  background-color: #424242;
+}
+
+.halfpage{
+  width: 50%;
+  height: 80vh;
+  background-color: #424242;
+  text-align: center;
+
+}
+
+.otherpage{
+  width: 50%;
+  height: 80vh;
+  background-color: #3c3c3c;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.bottomofotherpage{
+  height: 20vh;
+  width: 100%;
+  background: #424242;
+  align-items: center;
+}
+
+.topofotherpage{
+  height: 60vh;
+  overflow: auto;
+}
+
+.friendboxinvites{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.friendboxinvites:hover{
+  background-color: #4d4d4d
+}
+
+.friendboxlabel{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #2f2f2f;
+}
 
 
 

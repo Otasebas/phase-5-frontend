@@ -68,9 +68,6 @@ function GroupInfo({user}){
                         </div>
                         <GroupCalendar />
                     </div>
-                    {/* <div className="groupinfo50">
-                        
-                    </div> */}
                 </div>
             )}
         </>

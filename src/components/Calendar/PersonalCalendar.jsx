@@ -13,41 +13,10 @@ function PersonalCalander({user}){
     const [description, setDescription] = useState("")
     const [errors, setErrors] = useState("")
     const [personalDates, setPersonalDates] = useState([])
-    
-    // const personalEvents = [
-    //     {
-    //         "id": 1,
-    //         "date": "2023, 2, 12",
-    //         "name_of_event": "Matt's Birthday",
-    //         "start_time": "18:00",
-    //         "end_time": "22:00"
-    //     },
-    //     {
-    //         "id": 2,
-    //         "date": "2023, 2, 18",
-    //         "name_of_event": "Ash's Birthday",
-    //         "start_time": "18:00",
-    //         "end_time": "22:00"
-    //     },
-    //     {
-    //         "id": 3,
-    //         "date": "2023, 2, 4",
-    //         "name_of_event": "Sam's Birthday",
-    //         "start_time": "18:00",
-    //         "end_time": "22:00"
-    //     },
-    //     {
-    //         "id": 4,
-    //         "date": "2023, 2, 4",
-    //         "name_of_event": "Sam's Birthday",
-    //         "start_time": "22:00",
-    //         "end_time": "24:00"
-    //     }
-        
-    // ]
+
 
     useEffect(()=>{
-        fetch("/personal_calendars")
+        fetch("/personaldates")
         .then(res => res.json())
         .then(req => setPersonalDates(req))
     },[])
@@ -76,7 +45,7 @@ function PersonalCalander({user}){
     }
 
     function handlePostEvent(){
-        fetch("/personal_calendars",{
+        fetch("/createpersonalevent",{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -87,7 +56,6 @@ function PersonalCalander({user}){
                 "start_time": timeStart,
                 "end_time": timeEnd,
                 "description": description,
-                "user_id": user.id
             })
         })
         .then(req => {
@@ -105,7 +73,7 @@ function PersonalCalander({user}){
     }
 
     function handleRemove(event){
-        fetch(`/personal_calendars/${event.id}`,{ method: 'DELETE' })
+        fetch(`/personaldates/${event.id}`,{ method: 'DELETE' })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -189,16 +157,3 @@ function PersonalCalander({user}){
 }
 
 export default PersonalCalander
-
-// {personalDates.map(date =>{
-//     const specificDate = new Date(date.date);
-//     if (specificDate.toString() === value.toString()){
-//         return(
-//             <div key={specificDate.id}>
-//             <p>{specificDate.name_of_event}</p>
-//             <p>{specificDate.start_time} - {specificDate.end_time}</p>
-//             </div>
-//         );
-//     }
-// return null;
-// })}
