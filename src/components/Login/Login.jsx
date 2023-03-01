@@ -37,9 +37,12 @@ function Login({setUser}){
         })
     }
 
+    function handleSignUp(){
+        navigate("/")
+    }
+
     return(
-        <div className="sidebarcontainer">
-            <FriendBar/>
+        <div className="login">
             
             <div className="logincontainerall">
             {errors ? (
@@ -66,6 +69,7 @@ function Login({setUser}){
                 <br />
                     <button className="loginButton" type="submit">Login</button>
                 </form>
+                <h3 onClick={handleSignUp}> Sign Up! </h3>
             </div>
         </div>
     )

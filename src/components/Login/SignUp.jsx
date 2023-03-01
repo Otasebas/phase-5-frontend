@@ -46,8 +46,7 @@ function Signup({setUser}){
     }
 
     return(
-        <div className="sidebarcontainer">
-            <FriendBar/>
+        <div className="login">
             <div className="logincontainerall">
             {errors ? (
                 errors.map(error=>{

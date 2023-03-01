@@ -18,6 +18,7 @@ import FinalPlanning from './components/Events/FinalPlanning';
 import AllEvents from './components/Events/AllEvents';
 import EventInfo from './components/Events/EventInfo';
 import EventInvite from './components/Events/EventInvite';
+import EventInfoEdit from './components/Events/EventInfoEdit';
 import { useEffect, useState } from 'react';
 import {
   createBrowserRouter,
@@ -205,7 +206,7 @@ function App() {
       element: 
       <div>
         <Header user={user} setUser={setUser}/>
-        <EventInfo />
+        <EventInfoEdit />
       </div>
     },
     {

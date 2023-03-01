@@ -1,6 +1,6 @@
 import EvenSideBar from "./EventSideBar"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Calendar from "react-calendar"
 import { format } from 'date-fns'
 import differenceInCalendarDays from "date-fns/differenceInCalendarDays"
@@ -20,6 +20,8 @@ export default EventInfoEdit
 function SpecificEvent(){
 
     const {id} = useParams()
+
+    const navigate = useNavigate()
 
     const [event, setEvent] = useState({})
     const [invitee, setInvitee] = useState([])
@@ -60,6 +62,17 @@ function SpecificEvent(){
         }
     }
 
+    function deleteEvent(){
+        if(window.confirm("Are you sure you want to delete this event?")){
+            fetch(`/personaldates/${id}`,{ method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    navigate("/")
+                }
+            })
+        }
+    }
+
     return(
         <div className="sidebarcontainer">
             <div className="halfpage">
@@ -87,10 +100,10 @@ function SpecificEvent(){
                     <div className="loginLabel"> Take End </div>
 
                     <input className="loginInput" type="time" value={event.end_time} />
-                    
+{/*                     
                     <div className="loginLabel"> Location </div>
                     <input className="loginInput" type="text"/>
-                        
+                         */}
                     <div className="loginLabel"> Decription </div>
                     <input className="loginInput" type="text" value={event.description}/>
 
@@ -102,11 +115,18 @@ function SpecificEvent(){
                     return(
                         <div className="friend">
                             <h1 className="friendbox" >{invite.username}</h1>
-                            <button className="friendbox_button" >
-                                {invite.attendance === "pending" ? "pending..." : null}
-                                {invite.attendance === "accepted" ? "accepted" : null}
-                                {invite.attendance === "declined" ? "declined" : null}
-                            </button>
+                            {invite.attendance === "pending" && (
+                                <button className="friendbox_button">Pending...</button>
+                            )}
+                            {invite.attendance === "accepted" && (
+                                <button className="friendbox_button">Accepted</button>
+                            )}
+                            {invite.attendance === "declined" && (
+                                <button className="friendbox_button">Declined</button>
+                            )}
+                            {invite.attendance === null && (
+                                <button onClick={deleteEvent} className="friendbox_button">Delete</button>
+                            )}
                         </div>
                     )
                 })}
