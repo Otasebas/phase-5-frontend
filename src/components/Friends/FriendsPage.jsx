@@ -55,7 +55,6 @@ function Friend({friend, user, setUser}){
     return(
         <div className="friend">
             <h1 className="friendbox">{friend.username}</h1>
-            {/* <button className="friendbox_button"> Block </button> */}
             <button onClick={handleUnFriend} className="friendbox_button"> Unfriend </button>
         </div>
     )

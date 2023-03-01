@@ -42,6 +42,10 @@ function ProfileBar(){
         navigate("/friends")
     }
 
+    function handleCreating(){
+        navigate("/createfriend")
+    }
+
     return(
         <div className="profileContainer">
             <div className="upper50">
@@ -49,6 +53,7 @@ function ProfileBar(){
                 <button onClick={handleAddFriend} className="profile-button" > Add Friend </button>
                 <button onClick={handlePending} className="profile-button" > Pending </button>
                 <button onClick={handleRequests} className={notificationRequests ? 'profile-button-notif' : "profile-button"} > Requests </button>
+                <button onClick={handleCreating} className="profile-button" > Create Friend </button>
             </div>
             <div className="profileBottom">
                 <h3>username: {user.username}</h3>
